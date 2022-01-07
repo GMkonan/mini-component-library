@@ -1,1 +1,1 @@
-export { default } from './Breadcrumbs.js';
+export { Breadcrumbs, Crumb } from './Breadcrumbs';
