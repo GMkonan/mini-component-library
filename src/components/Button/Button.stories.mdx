@@ -1,9 +1,10 @@
 import { Meta, Story } from '@storybook/addon-docs/blocks';
 import Button from './Button';
+import ButtonTable from './ButtonTable';
 
 <Meta
   title="Button"
-  component={Button}
+  component={ButtonTable}
   argTypes={{
     value: {
       control: {
@@ -22,9 +23,7 @@ import Button from './Button';
 />
 
 export const Template = (args) => (
-  <Button {...args}>
-    
-  </Button>
+  <ButtonTable {...args} />
 );
 
 # Button

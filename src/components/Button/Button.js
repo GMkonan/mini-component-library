@@ -11,20 +11,26 @@ import { COLORS } from "./ButtonConstants";
 
 const SIZES = {
     small: {
-
+        '--borderRadius': 2 + 'px',
+        '--fontSize': 16 / 16 + 'rem', //18px converted to rem
+        '--padding': "8px 16px",
     },
     medium: {
-
+        '--borderRadius': 2 + 'px',
+        '--fontSize': 18 / 16 + 'rem', //18px converted to rem
+        '--padding': "16px 24px",
     },
     large: {
-
+        '--borderRadius': 4 + 'px',
+        '--fontSize': 21 / 16 + 'rem', //18px converted to rem
+        '--padding': "20px 36px",
     }
 }
 
 const Button = ({ variant, size, children }) => {
     const styles = SIZES[size]
     return (
-      <ButtonElement styles={styles}>
+      <ButtonElement style={styles}>
           {children}
       </ButtonElement>
   )
@@ -33,8 +39,10 @@ const Button = ({ variant, size, children }) => {
 const ButtonElement = styled.button`
     color: ${COLORS.white};
     background: ${COLORS.primary};
-    border-radius: 8px;
-    font-size: 20px;
+    border: none;
+    border-radius: var(--borderRadius);
+    font-size: var(--fontSize);
+    padding: var(--padding);
     &:hover {
         opacity: 70%;
     }
