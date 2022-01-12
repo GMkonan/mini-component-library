@@ -13,39 +13,81 @@ const SIZES = {
     small: {
         '--borderRadius': 2 + 'px',
         '--fontSize': 16 / 16 + 'rem', //18px converted to rem
-        '--padding': "8px 16px",
+        '--padding': "4px 12px",
     },
     medium: {
         '--borderRadius': 2 + 'px',
         '--fontSize': 18 / 16 + 'rem', //18px converted to rem
-        '--padding': "16px 24px",
+        '--padding': "12px 20px",
     },
     large: {
         '--borderRadius': 4 + 'px',
         '--fontSize': 21 / 16 + 'rem', //18px converted to rem
-        '--padding': "20px 36px",
+        '--padding': "16px 32px",
     }
 }
 
 const Button = ({ variant, size, children }) => {
     const styles = SIZES[size]
+    
+    let Component = variant == "fill" 
+    ? FillButton 
+    : variant == "outline"
+    ? OutlineButton
+    : GhostButton
+    
     return (
-      <ButtonElement style={styles}>
+      <Component style={styles}>
           {children}
-      </ButtonElement>
+      </Component>
   )
 };
 
-const ButtonElement = styled.button`
-    color: ${COLORS.white};
-    background: ${COLORS.primary};
-    border: none;
+const ButtonBase = styled.button`
+    border: 2px solid transparent;
     border-radius: var(--borderRadius);
     font-size: var(--fontSize);
     padding: var(--padding);
-    &:hover {
-        opacity: 70%;
+    
+    &:focus {
+        outline-color: ${COLORS.primary};
+        outline-offset: 4px;
     }
+
+`
+
+const FillButton = styled(ButtonBase)`
+    color: ${COLORS.white};
+    background: ${COLORS.primary};
+
+    &:hover {
+        background: ${COLORS.primaryLight};
+    }
+`
+
+const OutlineButton = styled(ButtonBase)`
+    color: ${COLORS.primary};
+    background: ${COLORS.white};
+    border: 2px solid currentColor; //match the border color with the text color
+
+    &:hover {
+        background: ${COLORS.offwhite};
+    }
+`
+
+const GhostButton = styled(ButtonBase)`
+    color: ${COLORS.gray};
+    background: transparent;
+
+    &:hover {
+        background: ${COLORS.transparentGray15};
+        color: ${COLORS.black};
+    }
+
+    &:focus {
+        outline-color: currentColor;
+    }
+
 `
 
 export default Button;
