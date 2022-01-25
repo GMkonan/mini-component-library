@@ -24,6 +24,7 @@ const Icon = ({ id, size, strokeWidth = 1, ...delegated }) => {
   return (
     <Wrapper
       style={{
+        //@ts-ignore
         '--size': size + 'px',
         '--stroke-width': strokeWidth + 'px',
       }}

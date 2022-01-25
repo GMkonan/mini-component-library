@@ -68,4 +68,4 @@ const CrumbLink = styled.a`
 //   </Breadcrumbs>
 // )
 
-export { Breadcrumbs, Crumb }
+export { Breadcrumbs, Crumb };
