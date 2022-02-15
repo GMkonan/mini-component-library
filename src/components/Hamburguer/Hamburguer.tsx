@@ -7,11 +7,8 @@ interface BurguerProps {
 //good to take a look if needed
 //https://levelup.gitconnected.com/how-to-create-a-responsive-hamburger-navigation-menu-reactjs-and-styled-components-59ce167ed543
 
-const Hamburguer = () => {
+const Hamburguer = (links) => {
   const [open, setOpen] = useState(false);
-
-  const handleOptionClick = () => setOpen(!open)
-  
 
   return (
     <>
@@ -21,9 +18,9 @@ const Hamburguer = () => {
         <div />
       </Burguer>
       <NavOptions open={open}>
-      <Link onClick={handleOptionClick}>About</Link>
-                    
-      <Link href="/articles">Articles</Link>
+        { links.map((link) => (
+          <Link>{link}</Link>
+        )) }
       </NavOptions>
     </>
   );
