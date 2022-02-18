@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from "react";
 import styled from "styled-components";
 import NavOptions from "./NavOptions";
@@ -7,7 +8,7 @@ interface BurguerProps {
 //good to take a look if needed
 //https://levelup.gitconnected.com/how-to-create-a-responsive-hamburger-navigation-menu-reactjs-and-styled-components-59ce167ed543
 
-const Hamburguer = (links) => {
+const Hamburguer = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -18,9 +19,9 @@ const Hamburguer = (links) => {
         <div />
       </Burguer>
       <NavOptions open={open}>
-        { links.map((link) => (
-          <Link>{link}</Link>
-        )) }
+        <Link>About</Link>
+                    
+        <Link>Articles</Link>
       </NavOptions>
     </>
   );
@@ -30,16 +31,14 @@ const Burguer = styled.div<BurguerProps>`
   //backdrop-filter: blur(6px);
   width: 2rem;
   height: 2rem;
-  position: relative;
-  top: 0px;
-  right: 20px;
   z-index: 20;
-  display: none;
-  
+  display: flex;
+  justify-content: space-around;
+    flex-flow: column nowrap;
   div {
     width: 2rem;
     height: 0.25rem;
-    background-color: ${({ open }) => (open ? "var(--blue400)" : "var(--primary)")};
+    background-color: ${({ open }) => (open ? "#000" : "#000")};
     border-radius: 10px;
     transform-origin: 1px;
     transition: all 0.3s linear;
@@ -57,7 +56,7 @@ const Burguer = styled.div<BurguerProps>`
 `;
 
 const Link = styled.a`
-color: var(--primary);
+color: #000;
 font-size: 1.9rem;
 text-decoration: none;
 `
