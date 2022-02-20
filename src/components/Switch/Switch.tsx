@@ -2,7 +2,11 @@ import React from 'react'
 import { useRef, useState } from 'react'
 import styled from 'styled-components'
 
-const Switch = () => {
+interface SwitchProps {
+  color?: string;
+}
+
+const Switch = ({color = "#fff"}: SwitchProps) => {
 
   return (
     <div>
@@ -10,6 +14,7 @@ const Switch = () => {
         <CheckBox
           id="checkbox"
           type="checkbox"
+          color={color}
         />
         <CheckBoxLabel
           htmlFor="checkbox"
@@ -50,7 +55,7 @@ const CheckBox = styled.input`
   width: 42px;
   height: 20px;
   &:checked + ${CheckBoxLabel} {
-    background: #4f668a;
+    background: ${props => props.color || "#000"};
     &::after {
       content: '';
       display: block;
