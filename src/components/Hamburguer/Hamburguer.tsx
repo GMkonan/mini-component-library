@@ -4,16 +4,17 @@ import styled from "styled-components";
 import NavOptions from "./NavOptions";
 interface BurguerProps {
   open: boolean;
+  color: string;
 }
 //good to take a look if needed
 //https://levelup.gitconnected.com/how-to-create-a-responsive-hamburger-navigation-menu-reactjs-and-styled-components-59ce167ed543
 
-const Hamburguer = () => {
+const Hamburguer = ({color = '#000'}) => {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <Burguer open={open} onClick={() => setOpen(!open)}>
+      <Burguer open={open} color={color} onClick={() => setOpen(!open)}>
         <div />
         <div />
         <div />
@@ -34,11 +35,12 @@ const Burguer = styled.div<BurguerProps>`
   z-index: 20;
   display: flex;
   justify-content: space-around;
-    flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  cursor: pointer;
   div {
     width: 2rem;
     height: 0.25rem;
-    background-color: ${({ open }) => (open ? "#000" : "#000")};
+    background-color: ${({ open, color }) => (open ? color : color)};
     border-radius: 10px;
     transform-origin: 1px;
     transition: all 0.3s linear;
