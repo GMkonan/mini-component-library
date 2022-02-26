@@ -2,6 +2,7 @@
 import chalk from 'chalk';
 import chalkAnimation from 'chalk-animation';
 import inquirer from 'inquirer';
+import fs from 'fs';
 
 //console.log(chalk.cyan("Which component you want to import?"))
 
@@ -19,8 +20,8 @@ await welcome();
 const askForComponent = async () => {
     //should be multiple choices probably
     const answers = await inquirer.prompt({
-        name: "question_component",
-        type: "list",
+        name: "selectedComponents",
+        type: "checkbox",
         message: "Which component you want to import?",
         choices: [
             'Button',
@@ -28,6 +29,13 @@ const askForComponent = async () => {
             'progress bar',
             'Switch'
         ]
+    })
+    answers.selectedComponents.map((component) => {
+        fs.copyFile(
+        `./${component}/${component}.tsx`,
+        `src/components/${component}`,
+        () => { console.log(chalk.cyan(`Created ${component} sucessfully!`)) }
+        )
     })
     //handle answer (copying from components to X directory in some way)
 }
