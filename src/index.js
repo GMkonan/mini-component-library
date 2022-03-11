@@ -2,7 +2,8 @@
 import chalk from 'chalk';
 import chalkAnimation from 'chalk-animation';
 import inquirer from 'inquirer';
-import fs from 'fs';
+import fs from 'fs-extra';
+import path from 'path';
 
 //console.log(chalk.cyan("Which component you want to import?"))
 
@@ -16,6 +17,16 @@ const welcome = async () => {
 }
 
 await welcome();
+
+const askForDirectory = async () => {
+
+    const answer = await inquirer.prompt({
+        name: "directory",
+        type: "input",
+        message: "Specify de project directory",
+    })
+    return answer.directory
+}
 
 const askForComponent = async () => {
     //should be multiple choices probably
@@ -40,4 +51,10 @@ const askForComponent = async () => {
     //handle answer (copying from components to X directory in some way)
 }
 
-await askForComponent();
+const copyAllComponents = async () => {
+    const directory = await askForDirectory();
+    //console.log(directory)
+    fs.copy(path.join(process.cwd(), "src" ,"components"), path.join(directory ,"components"))
+}
+
+await copyAllComponents();
