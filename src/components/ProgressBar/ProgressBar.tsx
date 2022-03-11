@@ -23,6 +23,8 @@ const ProgressBar = ({ value, size }) => {
 
 const styles = SIZES[size]
 
+if(!styles) throw new Error("Invalid size passed, options are: small, medium and large")
+
   return (
     <Container style={styles}>
       <VisuallyHidden>{value}%</VisuallyHidden>
