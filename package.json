@@ -2,7 +2,7 @@
   "name": "mini-component-library",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
+  
   "dependencies": {
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.12",
